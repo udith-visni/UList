@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_shoping_list"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Shoping List" />
+        <item
+            android:id="@+id/nav_todo_list"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="To Do List" />
+        <item
+            android:id="@+id/nav_pantry_list"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Pantry List" />
+        <item
+            android:id="@+id/nav_recipe_book"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Recipe Book" />
+
+        <item
+            android:id="@+id/nav_local_grocery_deals"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Local Grocery Deals" />
+
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Settings" />
+    </group>
+
+
+</menu>
