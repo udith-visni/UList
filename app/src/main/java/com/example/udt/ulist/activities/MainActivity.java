@@ -17,10 +17,8 @@ import android.view.MenuItem;
 import com.example.udt.ulist.R;
 import com.example.udt.ulist.fragments.LocalGroceryDealsFragment;
 import com.example.udt.ulist.fragments.SuperMarkets;
-import com.example.udt.ulist.fragments.RecipeBookFragment;
 import com.example.udt.ulist.fragments.SettingsFragment;
 import com.example.udt.ulist.fragments.ShoppingListFragment;
-import com.example.udt.ulist.fragments.ToDoListFragment;
 
 import java.util.List;
 
@@ -99,16 +97,8 @@ public class MainActivity extends AppCompatActivity
                 fragment = new ShoppingListFragment();
                 break;
 
-            case R.id.nav_todo_list:
-                fragment = new ToDoListFragment();
-                break;
-
-            case R.id.nav_pantry_list:
+            case R.id.nav_super_markets:
                 fragment = new SuperMarkets();
-                break;
-
-            case R.id.nav_recipe_book:
-                fragment = new RecipeBookFragment();
                 break;
 
             case R.id.nav_local_grocery_deals:

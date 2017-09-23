@@ -6,18 +6,11 @@
             android:id="@+id/nav_shoping_list"
             android:icon="@drawable/ic_menu_camera"
             android:title="Shoping List" />
+
         <item
-            android:id="@+id/nav_todo_list"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="To Do List" />
-        <item
-            android:id="@+id/nav_pantry_list"
+            android:id="@+id/nav_super_markets"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Pantry List" />
-        <item
-            android:id="@+id/nav_recipe_book"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Recipe Book" />
+            android:title="Super Markets" />
 
         <item
             android:id="@+id/nav_local_grocery_deals"
