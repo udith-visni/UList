@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+    <!--<color name="colorAccent">#FF4081</color>-->
+    <color name="colorPrimary">#f37720</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="fullyWhite">#ffffff</color>
+    <color name="whiteOpacity220">#dcffffff</color>
+    <color name="whiteOpacity200">#c8ffffff</color>
+    <color name="whiteOpacity180">#b4ffffff</color>
+    <color name="whiteOpacity160">#a0ffffff</color>
+    <color name="whiteOpacity140">#8cffffff</color>
+    <color name="whiteOpacity120">#78ffffff</color>
+    <color name="whiteOpacity100">#64ffffff</color>
+    <color name="whiteOpacity80">#50ffffff</color>
+    <color name="whiteOpacity60">#3cffffff</color>
+    <color name="whiteOpacity40">#28ffffff</color>
+    <color name="fullyTransparent">#00ffffff</color>
+    <color name="fullyBlack">#000000</color>
+    <color name="blackOpacity220">#dc000000</color>
+    <color name="blackOpacity200">#c8000000</color>
+    <color name="blackOpacity180">#b4000000</color>
+    <color name="blackOpacity160">#a0000000</color>
+    <color name="blackOpacity140">#8c000000</color>
+    <color name="blackOpacity120">#78000000</color>
+    <color name="blackOpacity100">#64000000</color>
+    <color name="blackOpacity80">#50000000</color>
+    <color name="blackOpacity60">#3c000000</color>
+    <color name="blackOpacity40">#28000000</color>
+    <color name="blackOpacity20">#14000000</color>
+    <color name="gray">#e8e9ee</color>
+    <color name="grayOpacity60">#96e8e9ee</color>
+    <color name="dark_gray">#919193</color>
+    <color name="blackOpacity10">#0a000000</color>
+    <color name="signInButtonBG">#6d9ea0</color>
+    <color name="closedRed">#f42128</color>
+    <color name="darkRed">#78070b</color>
+    <!--<color name="appThemeColor">#f47721</color>-->
+    <color name="redColor">#cc0404</color>
+    <color name="appThemeColor">#f37720</color>
+    <color name="graOpacity90">#9d9d9d</color>
+    <color name="shadow">#66000000</color>
 </resources>

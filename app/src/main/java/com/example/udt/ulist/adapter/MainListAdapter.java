@@ -2,10 +2,13 @@ package com.example.udt.ulist.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -37,7 +40,7 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.Custom
     }
 
     @Override
-    public void onBindViewHolder(CustomViewHolder customViewHolder, int i) {
+    public void onBindViewHolder(final CustomViewHolder customViewHolder, int i) {
         final MainListItem feedItem = mainListItems.get(i);
         customViewHolder.txtItemListName.setText((feedItem.getListName()));
         customViewHolder.txtBoughtItem.setText(feedItem.getBoughtItem());
@@ -52,6 +55,37 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.Custom
                 context.startActivity(intent);
             }
         });
+
+
+        customViewHolder.btnItemOptions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //creating a popup menu
+                PopupMenu popup = new PopupMenu(context, customViewHolder.btnItemOptions);
+                //inflating menu from xml resource
+                popup.inflate(R.menu.item_options_menu);
+                //adding click listener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.menu1:
+                                mainListItems.remove(customViewHolder.getAdapterPosition());
+                                notifyDataSetChanged();
+                                break;
+                            case R.id.menu2:
+                                //handle menu2 click
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                //displaying the popup
+                popup.show();
+
+            }
+        });
     }
 
     @Override
@@ -63,6 +97,7 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.Custom
         private final TextView txtItemListName;
         private final TextView txtBoughtItem;
         private final TextView txtTotalItem;
+        private final Button btnItemOptions;
         protected LinearLayout llItemList;
 
         public CustomViewHolder(View view) {
@@ -70,6 +105,7 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.Custom
             this.txtItemListName = (TextView) view.findViewById(R.id.txtItemListName);
             this.txtBoughtItem = (TextView) view.findViewById(R.id.txtBoughtItem);
             this.txtTotalItem = (TextView) view.findViewById(R.id.txtTotalItem);
+            this.btnItemOptions=(Button)view.findViewById(R.id.btnItemOptions);
             this.llItemList = (LinearLayout) view.findViewById(R.id.llItemList);
         }
     }

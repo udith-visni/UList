@@ -1,18 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/txtMyShopingList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:text="My Shoping Lists "
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_below="@+id/txtMyShopingList"
+            android:id="@+id/rvMainList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+
+    </RelativeLayout>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="My Shoping Lists "
-        android:layout_marginBottom="15dp"/>
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvMainList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </android.support.v7.widget.RecyclerView>
+    />
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

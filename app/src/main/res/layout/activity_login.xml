@@ -1,15 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
     tools:context="com.example.udt.ulist.activities.LoginActivity">
 
     <Button
+        android:id="@+id/btnfacebook"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_above="@+id/btn_try"
+        android:layout_margin="10dp"
+        android:drawableLeft="@drawable/fb"
+        android:layout_marginBottom="30dp"
+        android:textSize="18sp"
+        android:background="@android:color/transparent"
+        android:text="Login with facebook" />
+
+
+    <TextView
+        android:id="@+id/btn_try"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_try"
-        android:text="let me try"/>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="20dp"
+        android:text="let me try"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
-</android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>
+
+
+
+
