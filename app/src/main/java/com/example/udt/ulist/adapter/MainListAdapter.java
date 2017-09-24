@@ -8,8 +8,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.udt.ulist.R;
@@ -18,9 +18,6 @@ import com.example.udt.ulist.model.MainListItem;
 
 import java.util.List;
 
-/**
- * Created by Visni on 7/11/2017.
- */
 
 public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.CustomViewHolder> {
 
@@ -45,7 +42,7 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.Custom
         customViewHolder.txtItemListName.setText((feedItem.getListName()));
         customViewHolder.txtBoughtItem.setText(feedItem.getBoughtItem());
         customViewHolder.txtTotalItem.setText(feedItem.getTotalItem());
-        customViewHolder.llItemList.setOnClickListener(new View.OnClickListener() {
+        customViewHolder.rlItemList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, CreateList.class);
@@ -57,12 +54,12 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.Custom
         });
 
 
-        customViewHolder.btnItemOptions.setOnClickListener(new View.OnClickListener() {
+        customViewHolder.ImgItemOptions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 //creating a popup menu
-                PopupMenu popup = new PopupMenu(context, customViewHolder.btnItemOptions);
+                PopupMenu popup = new PopupMenu(context, customViewHolder.ImgItemOptions);
                 //inflating menu from xml resource
                 popup.inflate(R.menu.item_options_menu);
                 //adding click listener
@@ -97,16 +94,17 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.Custom
         private final TextView txtItemListName;
         private final TextView txtBoughtItem;
         private final TextView txtTotalItem;
-        private final Button btnItemOptions;
-        protected LinearLayout llItemList;
+        private final ImageView ImgItemOptions;
+        protected RelativeLayout rlItemList;
 
         public CustomViewHolder(View view) {
             super(view);
             this.txtItemListName = (TextView) view.findViewById(R.id.txtItemListName);
             this.txtBoughtItem = (TextView) view.findViewById(R.id.txtBoughtItem);
             this.txtTotalItem = (TextView) view.findViewById(R.id.txtTotalItem);
-            this.btnItemOptions=(Button)view.findViewById(R.id.btnItemOptions);
-            this.llItemList = (LinearLayout) view.findViewById(R.id.llItemList);
+            this.ImgItemOptions = (ImageView) view.findViewById(R.id.btnItemOptions);
+            this.rlItemList = (RelativeLayout) view.findViewById(R.id.rlItemList);
         }
     }
 }
+

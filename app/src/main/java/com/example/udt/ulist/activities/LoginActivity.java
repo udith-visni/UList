@@ -5,17 +5,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.udt.ulist.R;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button btnTry;
+    TextView btnTry;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        btnTry=(Button)findViewById(R.id.btn_try);
+        btnTry=(TextView)findViewById(R.id.btn_try);
 
         btnTry.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -47,7 +47,6 @@ public class ShoppingListFragment extends android.support.v4.app.Fragment {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         rvMainList.setLayoutManager(mLayoutManager);
         rvMainList.setItemAnimator(new DefaultItemAnimator());
-        //addItem();
         initFab();
         return view;
     }
@@ -74,18 +73,23 @@ public class ShoppingListFragment extends android.support.v4.app.Fragment {
                 final View yourCustomView = inflater.inflate(R.layout.dialog_main_list, null);
 
                 final TextView etName = (EditText) yourCustomView.findViewById(R.id.etListName);
-                AlertDialog dialog = new AlertDialog.Builder(getActivity())
-                        .setTitle("Enter Your List Name")
+                AlertDialog dialog = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme)
+                        .setTitle("          Enter Your List Name")
                         .setView(yourCustomView)
                         .setPositiveButton("Save", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 String ListNAme = etName.getText().toString();
-                                addItem(ListNAme);
+
+                                if (!ListNAme.isEmpty()) {
+                                    addItem(ListNAme);
+                                }
+
                                 Log.d(TAG,"ListNAme "+ListNAme);
                             }
                         })
                         .setNegativeButton("Cancel", null).create();
                 dialog.show();
+
             }
         });
     }

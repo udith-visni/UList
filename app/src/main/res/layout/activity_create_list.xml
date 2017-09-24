@@ -24,7 +24,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/etListElement"
             android:layout_width="wrap_content"
             android:layout_height="47dp"
             android:layout_weight="1"
@@ -33,23 +33,39 @@
             tools:layout_editor_absoluteX="5dp"
             tools:layout_editor_absoluteY="103dp" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="50dp"
+        <ImageView
+            android:src="@drawable/barcode"
+            android:id="@+id/imgBarcode"
+            android:layout_width="wrap_content"
             android:layout_height="47dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:text="V" />
+
+            />
+
+
+        <ImageView
+            android:src="@drawable/microphone"
+            android:id="@+id/imgMicrophone"
+            android:layout_width="wrap_content"
+            android:layout_height="47dp"
+
+            />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnAdd"
             android:layout_width="50dp"
             android:layout_height="46dp"
-            android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:text="+" />
 
     </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvListElements"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
 
 
 </LinearLayout>
