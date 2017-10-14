@@ -1,7 +1,6 @@
 package com.example.udt.ulist.activities;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.speech.RecognizerIntent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,26 +10,19 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.udt.ulist.R;
 import com.example.udt.ulist.adapter.ListElementAdapter;
-import com.example.udt.ulist.adapter.MainListAdapter;
 import com.example.udt.ulist.model.ListElement;
-import com.example.udt.ulist.model.MainListItem;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.R.attr.id;
-import static com.example.udt.ulist.R.id.rvMainList;
 
 public class CreateList extends AppCompatActivity {
 

@@ -11,8 +11,8 @@
         android:id="@+id/txtListName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         android:layout_gravity="center"
+        android:text="TextView"
         android:textSize="25sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="44dp"
@@ -29,26 +29,20 @@
             android:layout_height="47dp"
             android:layout_weight="1"
             android:hint="Add Item"
-            android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="5dp"
-            tools:layout_editor_absoluteY="103dp" />
+            android:inputType="textPersonName" />
 
         <ImageView
-            android:src="@drawable/barcode"
             android:id="@+id/imgBarcode"
             android:layout_width="wrap_content"
             android:layout_height="47dp"
-
-            />
+            android:src="@drawable/barcode" />
 
 
         <ImageView
-            android:src="@drawable/microphone"
             android:id="@+id/imgMicrophone"
             android:layout_width="wrap_content"
             android:layout_height="47dp"
-
-            />
+            android:src="@drawable/microphone" />
 
         <Button
             android:id="@+id/btnAdd"
@@ -62,10 +56,9 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvListElements"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"></android.support.v7.widget.RecyclerView>
 
 
 </LinearLayout>

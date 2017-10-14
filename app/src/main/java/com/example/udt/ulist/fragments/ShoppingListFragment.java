@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,10 +16,10 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.udt.ulist.CustomDialog;
+import com.example.udt.ulist.DB.DatabaseHandler;
 import com.example.udt.ulist.R;
 import com.example.udt.ulist.adapter.MainListAdapter;
-import com.example.udt.ulist.model.MainListItem;
+import com.example.udt.ulist.model.MyLists;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,32 +33,57 @@ public class ShoppingListFragment extends android.support.v4.app.Fragment {
     MainListAdapter mainListAdapter;
     private RecyclerView rvMainList;
     Dialog addMainItemDialog;
-    List<MainListItem> mainLists;
+    List<MyLists> myLists;
     private static final String TAG = ShoppingListFragment.class.getSimpleName();
     private EditText etListName;
+    public DatabaseHandler databaseHandler;
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_shopping_list, container, false);
         initViews(view);
-        mainLists = new ArrayList();
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-        rvMainList.setLayoutManager(mLayoutManager);
-        rvMainList.setItemAnimator(new DefaultItemAnimator());
-        initFab();
+        setUpView();
         return view;
     }
 
     private void initViews(View view) {
         rvMainList = (RecyclerView) view.findViewById(R.id.rvMainList);
 
+
+
     }
 
-    public void addItem(String listname) {
-        mainLists.add(new MainListItem(listname,"0","0"));
-       // mainLists.add(new MainListItem("My List 1","4","20"));
-        mainListAdapter = new MainListAdapter(getActivity(), mainLists);
+    private void setUpView(){
+        databaseHandler= new DatabaseHandler(getActivity());
+        myLists = new ArrayList();
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        rvMainList.setLayoutManager(mLayoutManager);
+        rvMainList.setItemAnimator(new DefaultItemAnimator());
+        if(databaseHandler.getListCount()>0){
+            showLists();
+        }
+        initFab();
+    }
+
+    private void addLists(String listName){
+        // Inserting Contacts
+        Log.d("Insert: ", "Inserting ..");
+        databaseHandler.addList(new MyLists(listName));
+
+        clearData();
+        showLists();
+    }
+
+    public void clearData() {
+        myLists.clear(); //clear list
+        mainListAdapter.notifyDataSetChanged(); //let your adapter know about the changes and reload view.
+    }
+
+    public void showLists() {
+        myLists.addAll(databaseHandler.getAlllists());
+        mainListAdapter = new MainListAdapter(getActivity(), myLists);
         rvMainList.setAdapter(mainListAdapter);
         mainListAdapter.notifyDataSetChanged();
     }
@@ -74,17 +98,17 @@ public class ShoppingListFragment extends android.support.v4.app.Fragment {
 
                 final TextView etName = (EditText) yourCustomView.findViewById(R.id.etListName);
                 AlertDialog dialog = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme)
-                        .setTitle("          Enter Your List Name")
+                        .setTitle("          Enter Your MyLists Name")
                         .setView(yourCustomView)
                         .setPositiveButton("Save", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                String ListNAme = etName.getText().toString();
+                                String ListName = etName.getText().toString();
 
-                                if (!ListNAme.isEmpty()) {
-                                    addItem(ListNAme);
+                                if (!ListName.isEmpty()) {
+                                    addLists(ListName);
                                 }
 
-                                Log.d(TAG,"ListNAme "+ListNAme);
+                                Log.d(TAG,"ListName "+ListName);
                             }
                         })
                         .setNegativeButton("Cancel", null).create();
