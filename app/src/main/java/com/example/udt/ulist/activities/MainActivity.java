@@ -22,7 +22,7 @@ import com.example.udt.ulist.fragments.ShoppingListFragment;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     ShoppingListFragment shoppingListFragment;
     private List<String> list;

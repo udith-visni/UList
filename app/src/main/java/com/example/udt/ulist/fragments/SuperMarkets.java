@@ -12,7 +12,7 @@ import com.example.udt.ulist.R;
  * Created by UDT on 8/20/2017.
  */
 
-public class SuperMarkets extends android.support.v4.app.Fragment {
+public class SuperMarkets extends BaseFragment {
     View myview;
 
     @Nullable

@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.udt.ulist.DB.DatabaseHandler;
 import com.example.udt.ulist.R;
 import com.example.udt.ulist.activities.CreateList;
+import com.example.udt.ulist.activities.ShowList;
 import com.example.udt.ulist.model.MyLists;
 
 import java.util.List;
@@ -46,7 +47,7 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.Custom
         customViewHolder.rlItemList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, CreateList.class);
+                Intent intent = new Intent(context, ShowList.class);
                 intent.putExtra("listName", feedItem.getListName());
                 context.startActivity(intent);
             }
@@ -93,7 +94,7 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.Custom
 
     @Override
     public long getItemId(int position) {
-        return super.getItemId(position);
+        return myLists.get(position).getId();
     }
 
     @Override

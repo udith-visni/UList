@@ -32,14 +32,14 @@
             android:inputType="textPersonName" />
 
         <ImageView
-            android:id="@+id/imgBarcode"
+           android:id="@+id/imgBarcode"
             android:layout_width="wrap_content"
             android:layout_height="47dp"
             android:src="@drawable/barcode" />
 
 
         <ImageView
-            android:id="@+id/imgMicrophone"
+           android:id="@+id/imgMicrophone"
             android:layout_width="wrap_content"
             android:layout_height="47dp"
             android:src="@drawable/microphone" />
@@ -58,7 +58,10 @@
         android:id="@+id/rvListElements"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"></android.support.v7.widget.RecyclerView>
+        android:layout_marginTop="10dp">
+
+
+    </android.support.v7.widget.RecyclerView>
 
 
 </LinearLayout>

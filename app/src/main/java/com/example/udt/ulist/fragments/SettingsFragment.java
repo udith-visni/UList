@@ -13,7 +13,7 @@ import com.example.udt.ulist.R;
  * Created by UDT on 8/20/2017.
  */
 
-public class SettingsFragment extends android.support.v4.app.Fragment {
+public class SettingsFragment extends BaseFragment {
     View myview;
 
     @Nullable

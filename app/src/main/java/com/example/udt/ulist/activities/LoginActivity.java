@@ -28,7 +28,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 import static com.example.udt.ulist.R.id.btnGoogle;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = LoginActivity.class.getSimpleName();
     Button btnTry,btnfb,btnGoogles;

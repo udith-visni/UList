@@ -7,15 +7,13 @@ import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.udt.ulist.model.ListElement;
+import com.example.udt.ulist.model.ListItem;
 import com.example.udt.ulist.model.MyLists;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.R.attr.id;
 import static android.R.attr.version;
-import static android.R.id.list;
 
 /**
  * Created by UDT on 9/22/2017.
@@ -25,14 +23,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "shoppinglists";
+
     private static final String TABLE_LISTS = "lists";
-    private static final String TABLE_LIST_ELEMENT = "list_element";
     private static final String KEY_ID = "id";
-    private static final String KEY_ITEM_ID = "item_id";
     private static final String KEY_LIST_NAME = "list_name";
-    private static final String KEY_ELEMENT_NAME = "element_name";
-    private static final String CREATE_LISTS_TABLE = "CREATE TABLE " + TABLE_LISTS + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_LIST_NAME + " TEXT" + ")";
-    private static final String CREATE_LIST_ELEMENT_TABLE = "CREATE TABLE " + TABLE_LIST_ELEMENT + "(" + KEY_ITEM_ID + " INTEGER PRIMARY KEY," + KEY_ELEMENT_NAME + " TEXT" + ")";
+    private static final String KEY_TOTAL = "list_name";
+
+    private static final String TABLE_LIST_ELEMENT = "list_element";
+    private static final String KEY_ITEM_ID = "item_id";
+    private static final String KEY_ITEM_NAME = "item_name";
+    private static final String KEY_PRICE = "price";
+    private static final String KEY_PROMO_PRICE = "promo_price";
+    private static final String KEY_QTY = "qty";
+    private static final String KEY_ITEM_TOTAL = "item_total";
+
+
+    private static final String CREATE_LISTS_TABLE = "CREATE TABLE " + TABLE_LISTS + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_LIST_NAME + " TEXT" + KEY_TOTAL+" INTEGER" +")";
+    private static final String CREATE_LIST_ELEMENT_TABLE = "CREATE TABLE " + TABLE_LIST_ELEMENT + "(" + KEY_ITEM_ID + " INTEGER PRIMARY KEY," + KEY_ITEM_NAME + " TEXT" +
+            KEY_PRICE+"INTEGER"+ KEY_PROMO_PRICE+"INTEGER"+KEY_QTY+"INTEGER"+KEY_ITEM_TOTAL+"INTEGER"+")";
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, version);
@@ -74,48 +82,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
-    // add the new element
-    public void addElement(ListElement listElement) {
-        SQLiteDatabase db = this.getWritableDatabase();
 
-        ContentValues values = new ContentValues();
-        values.put(KEY_ELEMENT_NAME, listElement.getElementName()); // myLists Name
-
-        // Inserting Row
-        db.insert(TABLE_LIST_ELEMENT, null, values);
-        //2nd argument is String containing nullColumnHack
-        db.close(); // Closing database connection
-    }
-
-
-    // get the single element
-    public ListElement getelemet(int id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = db.query(TABLE_LIST_ELEMENT, new String[]{KEY_ITEM_ID,
-                        KEY_ELEMENT_NAME}, KEY_ITEM_ID + "=?",
-                new String[]{String.valueOf(id)}, null, null, null, null);
-        if (cursor != null)
-            cursor.moveToFirst();
-
-        ListElement listElement = new ListElement(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1));
-        // return contact
-        return listElement;
-    }
 
     // get the single list
     public MyLists getlist(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_LISTS, new String[]{KEY_ID,
-                        KEY_LIST_NAME}, KEY_ID + "=?",
+                        KEY_LIST_NAME,KEY_TOTAL}, KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
         MyLists myLists = new MyLists(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1));
+                cursor.getString(1),cursor.getInt(2));
         // return contact
         return myLists;
     }
@@ -177,4 +157,37 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // return count
         return count;
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// add the new element
+    public void addElement(ListItem listItem) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_ITEM_NAME, listItem.getItemName()); // myLists Name
+
+        // Inserting Row
+        db.insert(TABLE_LIST_ELEMENT, null, values);
+        //2nd argument is String containing nullColumnHack
+        db.close(); // Closing database connection
+    }
+
+
+    // get the single element
+    public ListItem getelemet(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_LIST_ELEMENT, new String[]{KEY_ITEM_ID,
+                        KEY_ITEM_NAME}, KEY_ITEM_ID + "=?",
+                new String[]{String.valueOf(id)}, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        ListItem listItem = new ListItem(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1),cursor.getInt(2),cursor.getInt(3),cursor.getInt(4),cursor.getInt(5));
+        // return contact
+        return listItem;
+    }
+
+
 }

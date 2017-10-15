@@ -32,10 +32,8 @@
         </activity>
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.CreateList" />
-
-        <activity android:name=".activities.ItemDetails"></activity>
-
-
+        <activity android:name=".activities.ShowList"/>
+        <activity android:name=".activities.BaseActivity"/>
 
     </application>
 

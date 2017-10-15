@@ -10,18 +10,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.udt.ulist.R;
-import com.example.udt.ulist.model.ListElement;
+import com.example.udt.ulist.model.Item;
+import com.example.udt.ulist.model.ListItem;
 
 import java.util.List;
 
-public class ListElementAdapter extends RecyclerView.Adapter<ListElementAdapter.CustomViewHolder> {
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.CustomViewHolder> {
 
-    private List<ListElement> listElements;
+    private List<Item> items;
     private Context context;
 
-    public ListElementAdapter(Context context, List<ListElement> listElements) {
+    public ItemAdapter(Context context, List<Item> items) {
         this.context = context;
-        this.listElements = listElements;
+        this.items = items;
     }
 
     @Override
@@ -33,41 +34,28 @@ public class ListElementAdapter extends RecyclerView.Adapter<ListElementAdapter.
 
     @Override
     public void onBindViewHolder(final CustomViewHolder customViewHolder, int i) {
-        final ListElement feedItem = listElements.get(i);
-        customViewHolder.txtElementName.setText((feedItem.getElementName()));
+        final Item feedItem = items.get(i);
+        customViewHolder.txtElementName.setText((feedItem.getItemName()));
 
-//        customViewHolder.rvListElements.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(context, ElementDetails.class);
-//                intent.putExtra("elementName", feedItem.getElementName());
-//                context.startActivity(intent);
-//            }
-//        });
-
-
-//        customViewHolder.imgPromo.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
     }
 
     @Override
     public int getItemCount() {
-        return (null != listElements ? listElements.size() : 0);
+        return (null != items ? items.size() : 0);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return items.get(position).getItemId();
     }
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
         private final TextView txtElementName;
-        private final ImageView imgPromo;
         protected RelativeLayout rvListElements;
 
         public CustomViewHolder(View view) {
             super(view);
             this.txtElementName = (TextView) view.findViewById(R.id.txtElementName);
-            this.imgPromo = (ImageView) view.findViewById(R.id.imgPromo);
             this.rvListElements = (RelativeLayout) view.findViewById(R.id.rvListElements);
         }
     }

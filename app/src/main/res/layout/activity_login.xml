@@ -83,7 +83,7 @@
         android:layout_marginTop="20dp"
         android:text="Let Me Try"
         android:background="@drawable/my_button_bg"
-        android:textColor="@color/fullyBlack"
+        android:textColor="@color/blackColor"
         android:textSize="20sp" />
 
 

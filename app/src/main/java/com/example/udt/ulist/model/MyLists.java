@@ -10,6 +10,8 @@ public class MyLists {
 
     int id;
     String listName;
+    int total;
+
 
     public MyLists() {
     }
@@ -18,9 +20,10 @@ public class MyLists {
         this.listName = listName;
     }
 
-    public MyLists(int id, String listName) {
+    public MyLists(int id, String listName, int total) {
         this.id = id;
         this.listName = listName;
+        this.total = total;
     }
 
     public String getListName() {
@@ -39,5 +42,12 @@ public class MyLists {
         this.id = id;
     }
 
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
 
 }

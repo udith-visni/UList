@@ -28,7 +28,7 @@ import java.util.List;
  * Created by UDT on 8/20/2017.
  */
 
-public class ShoppingListFragment extends android.support.v4.app.Fragment {
+public class ShoppingListFragment extends BaseFragment {
     View view;
     MainListAdapter mainListAdapter;
     private RecyclerView rvMainList;
