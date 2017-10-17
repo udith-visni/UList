@@ -2,6 +2,7 @@ package com.example.udt.ulist.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.SQLException;
 import android.speech.RecognizerIntent;
 import android.support.design.widget.Snackbar;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -55,24 +57,34 @@ public class CreateList extends BaseActivity {
         rvListElements.setLayoutManager(mLayoutManager);
         rvListElements.setItemAnimator(new DefaultItemAnimator());
 
-        masterDbHandler=new MasterDbHandler(this);
+        masterDbHandler = new MasterDbHandler(this);
 
-        //check exists database
-        File database=getApplicationContext().getDatabasePath(MasterDbHandler.DATABASE_NAME);
-        if(false==database.exists()){
+        try {
 
-            masterDbHandler.getReadableDatabase();
-            if(copyDatabase(this)){
-                Log.d(TAG,"database copied");
-            }else {
-                Log.d(TAG,"database copied failed");
-                return;
-            }
-            items=masterDbHandler.getAllITems();
-            itemAdapter = new ItemAdapter(getApplicationContext(), items);
-            rvListElements.setAdapter(itemAdapter);
-            itemAdapter.notifyDataSetChanged();
+            masterDbHandler.createDataBase();
+
+        } catch (IOException ioe) {
+
+            throw new Error("Unable to create database");
+
         }
+
+        try {
+
+            masterDbHandler.openDataBase();
+
+        } catch (SQLException sqle) {
+
+            throw sqle;
+
+        }
+
+
+        items = masterDbHandler.getAllITems();
+        itemAdapter = new ItemAdapter(getApplicationContext(), items);
+        rvListElements.setAdapter(itemAdapter);
+        itemAdapter.notifyDataSetChanged();
+    }
 
 
 //        Bundle extras = getIntent().getExtras();
@@ -83,9 +95,9 @@ public class CreateList extends BaseActivity {
 //        }
 
 
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+//        btnAdd.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
 //                String element = etListElement.getText().toString();
 //                if (!element.isEmpty()) {
 //                    addElement(element);
@@ -96,8 +108,8 @@ public class CreateList extends BaseActivity {
 //                Log.d(TAG, "elemt -" + element);
 //                etListElement.setText("");
 
-            }
-        });
+//}
+    //       });
 //        imgMicrophne.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -113,7 +125,7 @@ public class CreateList extends BaseActivity {
 //                integrator.initiateScan();
 //            }
 //        });
-    }
+    //   }
 
 
     private void initView() {
@@ -126,37 +138,37 @@ public class CreateList extends BaseActivity {
 //        imgMicrophone = (ImageView) findViewById(R.id.imgMicrophone);
     }
 
-
-    public void startVoiceRecognitionActivity() {
-        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
-                "Speech recognition demo");
-        startActivityForResult(intent, VOICE_RECOGNITION_REQUEST_CODE);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == VOICE_RECOGNITION_REQUEST_CODE && resultCode == RESULT_OK) {
-            ArrayList<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-
-//            if (matches.contains("pen")) {
-//                listItems.add(new ListItem("pen"));
-//            }
-//            if (matches.contains("tea")) {
-//                listItems.add(new ListItem("tea"));
-//            }
-//            if (matches.contains("book")) {
-//                listItems.add(new ListItem("book"));
-//            }
 //
-//            rvListElements.setAdapter(new ListItemAdapter(getApplicationContext(), listItems));
-        }
+//    public void startVoiceRecognitionActivity() {
+//        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+//        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+//                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+//        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+//                "Speech recognition demo");
+//        startActivityForResult(intent, VOICE_RECOGNITION_REQUEST_CODE);
+//    }
 
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        if (requestCode == VOICE_RECOGNITION_REQUEST_CODE && resultCode == RESULT_OK) {
+//            ArrayList<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+//
+////            if (matches.contains("pen")) {
+////                listItems.add(new ListItem("pen"));
+////            }
+////            if (matches.contains("tea")) {
+////                listItems.add(new ListItem("tea"));
+////            }
+////            if (matches.contains("book")) {
+////                listItems.add(new ListItem("book"));
+////            }
+////
+////            rvListElements.setAdapter(new ListItemAdapter(getApplicationContext(), listItems));
+//        }
 
-        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (scanResult != null) {
+//
+//        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+//        if (scanResult != null) {
 //            String re = scanResult.getContents();
 //            Log.d(TAG, "code -" + re);
 //            if (re.equals("http://www.promateworld.com/")) {
@@ -167,8 +179,8 @@ public class CreateList extends BaseActivity {
 //            }
 //            rvListElements.setAdapter(new ListItemAdapter(getApplicationContext(), listItems));
 
-        }
-    }
+//        }
+//    }
 
 //    public void addElement(String elemntName) {
 //        items.add(new Item(elemntName));
@@ -178,25 +190,4 @@ public class CreateList extends BaseActivity {
 //    }
 
 
-    private boolean copyDatabase(Context context) {
-        try {
-            InputStream inputStream = context.getAssets().open(MasterDbHandler.DATABASE_NAME);
-            String outFileName = MasterDbHandler.DATABASE_NAME + MasterDbHandler.DATABASE_LOCATION;
-            OutputStream outputStream = new FileOutputStream(outFileName);
-            byte[] buff = new byte[1024];
-            int length = 0;
-            while ((length = inputStream.read(buff)) > 0) {
-                outputStream.write(buff, 0, length);
-
-            }
-            outputStream.flush();
-            outputStream.close();
-            Log.d(TAG, "database copied");
-            return true;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
 }

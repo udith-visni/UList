@@ -35,7 +35,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.CustomViewHold
     @Override
     public void onBindViewHolder(final CustomViewHolder customViewHolder, int i) {
         final Item feedItem = items.get(i);
-        customViewHolder.txtElementName.setText((feedItem.getItemName()));
+        customViewHolder.txtElementName.setText((feedItem.get_ItemName()));
 
     }
 
@@ -46,7 +46,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.CustomViewHold
 
     @Override
     public long getItemId(int position) {
-        return items.get(position).getItemId();
+        return items.get(position).get_id();
     }
 
     class CustomViewHolder extends RecyclerView.ViewHolder {

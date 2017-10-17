@@ -5,35 +5,34 @@ package com.example.udt.ulist.model;
  */
 
 public class Item {
-    private int itemId;
-    private String ItemName;
+    private int _id;
+    private String _ItemName;
 
     public Item() {
     }
 
-    public Item(String itemName) {
-        ItemName = itemName;
+    public Item(String _ItemName) {
+        this._ItemName = _ItemName;
     }
 
-
-    public Item(int itemId, String itemName) {
-        this.itemId = itemId;
-        ItemName = itemName;
+    public Item(int _id, String _ItemName) {
+        this._id = _id;
+        this._ItemName = _ItemName;
     }
 
-    public int getItemId() {
-        return itemId;
+    public int get_id() {
+        return _id;
     }
 
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
+    public void set_id(int _id) {
+        this._id = _id;
     }
 
-    public String getItemName() {
-        return ItemName;
+    public String get_ItemName() {
+        return _ItemName;
     }
 
-    public void setItemName(String itemName) {
-        ItemName = itemName;
+    public void set_ItemName(String _ItemName) {
+        this._ItemName = _ItemName;
     }
 }
