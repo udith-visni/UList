@@ -5,36 +5,59 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:background="#ffd27f">
+        android:background="@color/Green"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/txtElementName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/checkBox"
-            android:text="List Elemt Name" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:gravity="center">
 
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/txtElementName"
-            android:layout_alignBottom="@+id/txtElementName"
-            android:layout_alignParentStart="true" />
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:shadowColor="@color/transparent"
+                android:textColorHighlight="@color/transparent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true" />
 
-        <ImageView
-            android:id="@+id/imgPromo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/checkBox"
-            android:layout_marginEnd="14dp"
-            app:srcCompat="@android:drawable/btn_star_big_on" />
-    </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:textColor="@color/whiteColor"
+                android:id="@+id/txtElementName"
+                android:textSize="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/checkBox"
+                android:text="List Elemt Name" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imgPromo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@android:drawable/btn_star_big_on" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 </android.support.v7.widget.CardView>

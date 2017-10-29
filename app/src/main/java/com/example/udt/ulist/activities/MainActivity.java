@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.udt.ulist.R;
+import com.example.udt.ulist.fragments.DailyDealsFragment;
 import com.example.udt.ulist.fragments.LocalGroceryDealsFragment;
 import com.example.udt.ulist.fragments.SuperMarkets;
 import com.example.udt.ulist.fragments.SettingsFragment;
@@ -96,9 +97,15 @@ public class MainActivity extends BaseActivity
                 fragment = new LocalGroceryDealsFragment();
                 break;
 
+            case R.id.nav_daily_deals:
+                fragment = new DailyDealsFragment();
+                break;
+
             case R.id.nav_settings:
                 fragment = new SettingsFragment();
                 break;
+
+
 
         }
         if (fragment != null) {

@@ -2,12 +2,10 @@ package com.example.udt.ulist.activities;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.udt.ulist.R;
@@ -25,13 +23,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-
-import static com.example.udt.ulist.R.id.btnGoogle;
-
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = LoginActivity.class.getSimpleName();
-    Button btnTry,btnfb,btnGoogles;
+    LinearLayout tryBtnLL, fbBtnLl, googleBtnLl;
     private GoogleApiClient mGoogleApiClient;
     private static final int RC_SIGN_IN = 007;
     private FirebaseAuth mAuth;
@@ -49,6 +44,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
+
 
         // Build a GoogleApiClient with access to the Google Sign-In API and the
         // options specified by gso.
@@ -68,12 +64,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void initViews(){
-        btnTry = (Button) findViewById(R.id.btn_try);
-        btnTry.setOnClickListener(this);
-        btnfb = (Button) findViewById(R.id.btnfb);
-        btnfb.setOnClickListener(this);
-        btnGoogles = (Button) findViewById(R.id.btnGoogle);
-        btnGoogles.setOnClickListener(this);
+        tryBtnLL = (LinearLayout) findViewById(R.id.tryBtnLL);
+        tryBtnLL.setOnClickListener(this);
+        fbBtnLl = (LinearLayout) findViewById(R.id.fbBtnLl);
+        fbBtnLl.setOnClickListener(this);
+        googleBtnLl = (LinearLayout) findViewById(R.id.googleBtnLl);
+        googleBtnLl.setOnClickListener(this);
     }
 
     private void signIn() {
@@ -85,11 +81,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btnGoogle:
+            case R.id.googleBtnLl:
                 signIn();
                 break;
 
-            case R.id.btn_try:
+            case R.id.tryBtnLL:
                 Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(myIntent);
                 break;

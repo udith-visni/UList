@@ -6,4 +6,8 @@ package com.example.udt.ulist.util;
 
 public class Constant {
     public static String ULIST_SHARED_PREF = "ULIST_SHARED_PREF";
+
+    public static final String SUCCESS = "success";
+    public static final String ERROR = "error";
+    public static final String OK = "OK";
 }

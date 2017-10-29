@@ -4,22 +4,27 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_shoping_list"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/list"
             android:title="Shoping List" />
 
         <item
             android:id="@+id/nav_super_markets"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/shopping_cart"
             android:title="Super Markets" />
 
         <item
             android:id="@+id/nav_local_grocery_deals"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Local Grocery Deals" />
+            android:icon="@drawable/percentage"
+            android:title="Grocery Deals" />
+
+        <item
+            android:id="@+id/nav_daily_deals"
+            android:icon="@drawable/tag"
+            android:title="Daily Deals" />
 
         <item
             android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/settings"
             android:title="Settings" />
     </group>
 

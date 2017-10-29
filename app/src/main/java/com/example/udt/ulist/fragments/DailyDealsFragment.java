@@ -1,6 +1,5 @@
 package com.example.udt.ulist.fragments;
 
-import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,7 +16,6 @@ import android.widget.Toast;
 import com.example.udt.ulist.R;
 import com.example.udt.ulist.adapter.ProductRecyclerAdapter;
 import com.example.udt.ulist.model.Product;
-import com.example.udt.ulist.util.Constant;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -31,9 +29,9 @@ import java.util.List;
  * Created by UDT on 8/20/2017.
  */
 
-public class LocalGroceryDealsFragment extends BaseFragment {
+public class DailyDealsFragment extends BaseFragment {
     View myview;
-    private static final String TAG = LocalGroceryDealsFragment.class.getSimpleName();
+    private static final String TAG = DailyDealsFragment.class.getSimpleName();
     private RecyclerView recyclerView;
     private ProductRecyclerAdapter mAdapter;
     private final String url = "https://arpicosupercentre.com/big-deal-offer.html";
@@ -43,7 +41,7 @@ public class LocalGroceryDealsFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        myview = inflater.inflate(R.layout.fragment_local_grocery_deals, container, false);
+        myview = inflater.inflate(R.layout.fragment_daily_deals, container, false);
         recyclerView = (RecyclerView) myview.findViewById(R.id.promotionRv);
         menuLl = (LinearLayout) myview.findViewById(R.id.menuLl);
         productList = new ArrayList<>();
@@ -83,7 +81,7 @@ public class LocalGroceryDealsFragment extends BaseFragment {
         public ArrayList<Product> doInBackground(String... strings) {
             try {
                 Log.d(TAG, "inside crawler");
-                Document doc = Jsoup.connect("https://arpicosupercentre.com/big-deal-offer.html").get();
+                Document doc = Jsoup.connect("https://arpicosupercentre.com/daily-deals.html").get();
                 Elements products = doc.select("ul li");
                 productList = new ArrayList<Product>();
 

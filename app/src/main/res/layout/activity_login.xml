@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,83 +11,132 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_above="@+id/llfb"
-        android:layout_margin="5dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.7"></LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/googleBtnLl"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_weight="0.075"
         android:background="#FFFFFF"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="70dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/google" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:gravity="center">
 
-        <Button
-            android:id="@+id/btnGoogle"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:layout_marginBottom="30dp"
-            android:background="@android:color/transparent"
-            android:text="SignIn with Google"
-            android:textSize="18sp" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/google" />
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:text="SignIn with Google"
+                android:textSize="20sp">
+
+            </TextView>
+        </LinearLayout>
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.0375"></LinearLayout>
 
     <LinearLayout
-        android:id="@+id/llfb"
+        android:id="@+id/fbBtnLl"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_above="@+id/btn_try"
-        android:layout_margin="5dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_weight="0.075"
         android:background="#3b5998"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/imgfb"
-            android:layout_width="33dp"
-            android:layout_height="33dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="70dp"
-            android:src="@drawable/fb" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:gravity="center">
 
-        <Button
-            android:id="@+id/btnfb"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:layout_marginBottom="30dp"
-            android:background="@android:color/transparent"
-            android:text="Login With Facebook"
-            android:textSize="18sp" />
+            <ImageView
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:backgroundTint="@color/whiteColor"
+                android:src="@drawable/fb" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Login With Facebook"
+                android:textSize="20sp" />
+        </LinearLayout>
+
 
     </LinearLayout>
 
+    <LinearLayout
 
-    <Button
-        android:id="@+id/btn_try"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="20dp"
-        android:text="Let Me Try"
-        android:background="@drawable/my_button_bg"
-        android:textColor="@color/blackColor"
-        android:textSize="20sp" />
+        android:layout_height="0dp"
+        android:layout_weight="0.075"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/tryBtnLL"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Let Me Try"
+                android:textColor="@color/blackColor"
+                android:textSize="18dp" />
+
+        </LinearLayout>
 
 
-</RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.0375"></LinearLayout>
+
+
+</LinearLayout>
+
+
+
 
 
 

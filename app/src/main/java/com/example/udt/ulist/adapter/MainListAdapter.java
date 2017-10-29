@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -33,8 +34,8 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.Custom
     }
 
     @Override
-    public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_list_name, null);
+    public CustomViewHolder onCreateViewHolder(ViewGroup parent, int i) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_name, parent,false);
         CustomViewHolder viewHolder = new CustomViewHolder(view);
         return viewHolder;
     }
@@ -105,13 +106,13 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.Custom
     class CustomViewHolder extends RecyclerView.ViewHolder {
         private final TextView txtItemListName;
         private final ImageView ImgItemOptions;
-        protected RelativeLayout rlItemList;
+        protected LinearLayout rlItemList;
 
         public CustomViewHolder(View view) {
             super(view);
             this.txtItemListName = (TextView) view.findViewById(R.id.txtItemListName);
             this.ImgItemOptions = (ImageView) view.findViewById(R.id.btnItemOptions);
-            this.rlItemList = (RelativeLayout) view.findViewById(R.id.rlItemList);
+            this.rlItemList = (LinearLayout) view.findViewById(R.id.rlItemList);
         }
     }
 

@@ -1,61 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="65dp"
+    android:orientation="vertical">
 
-    android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/rlItemList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/brightBlue"
+            android:orientation="horizontal">
 
-    <RelativeLayout
-        android:id="@+id/rlItemList"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="10dp"
-        android:background="#fed776"
-        android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="0.9"
+                android:gravity="center_vertical">
 
+                <TextView
+                    android:id="@+id/txtItemListName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="List Name"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-        <!--<LinearLayout-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="80dp"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:layout_marginLeft="170dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:layout_alignParentStart="true">-->
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1">
 
-        <TextView
-            android:id="@+id/txtItemListName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="8dp"
-            android:text="List Name"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+                <ImageView
+                    android:layout_margin="5dp"
+                    android:id="@+id/btnItemOptions"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:backgroundTint="@color/transparent"
+                    android:src="@drawable/options" />
 
+            </LinearLayout>
 
-
-
-        <!--</LinearLayout>-->
-
-        <ImageView
-            android:id="@+id/btnItemOptions"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="@color/fullyTransparent"
-            android:src="@drawable/options" />
-
-    </RelativeLayout>
-
+        </LinearLayout>
 
 </android.support.v7.widget.CardView>

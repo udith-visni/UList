@@ -1,5 +1,6 @@
 package com.example.udt.ulist.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 
 import com.example.udt.ulist.R;
 import com.example.udt.ulist.model.Product;
+import com.squareup.picasso.Picasso;
+
 
 import java.util.List;
 
@@ -19,6 +22,7 @@ import java.util.List;
 public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecyclerAdapter.MyViewHolder> {
 
     private List<Product> productlist;
+    private Context context;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView productTv, oldPriceTv, specialPricetTv, promoPersentageTv;
@@ -35,7 +39,8 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
     }
 
 
-    public ProductRecyclerAdapter(List<Product> productlist) {
+    public ProductRecyclerAdapter( Context context,List<Product> productlist) {
+        this.context=context;
         this.productlist = productlist;
     }
 
@@ -54,6 +59,7 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
         holder.oldPriceTv.setText(product.getOldPrice());
         holder.specialPricetTv.setText(product.getSpecialPrice());
         holder.promoPersentageTv.setText(product.getPromo());
+        Picasso.with(context).load(product.getSrc()).resize(120, 60).into(holder.productIv);
     }
 
     @Override
