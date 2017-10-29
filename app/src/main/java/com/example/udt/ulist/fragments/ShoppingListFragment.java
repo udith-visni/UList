@@ -51,8 +51,6 @@ public class ShoppingListFragment extends BaseFragment {
     private void initViews(View view) {
         rvMainList = (RecyclerView) view.findViewById(R.id.rvMainList);
 
-
-
     }
 
     private void setUpView(){
