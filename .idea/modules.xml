@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/UList.iml" filepath="$PROJECT_DIR$/UList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ULIST_GITHUB.iml" filepath="$PROJECT_DIR$/ULIST_GITHUB.iml" />
+      <module fileurl="file://E:\Final Year Project\project\ULIST_GITHUB\UList.iml" filepath="E:\Final Year Project\project\ULIST_GITHUB\UList.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
